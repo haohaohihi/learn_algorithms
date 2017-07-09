@@ -1,9 +1,11 @@
 import edu.princeton.cs.algs4.StdOut;
 
+import java.util.Iterator;
+
 /**
  * Created by haohao on 17-7-9.
  */
-public class StackByArray<Item> {
+public class StackByArray<Item> implements Iterable<Item>{
     private Item[] s;
     private int N = 0;
 
@@ -39,5 +41,17 @@ public class StackByArray<Item> {
             newArray[i] = s[i];
         }
         s = newArray;
+    }
+
+    public Iterator<Item> iterator(){
+        return new ReverseArrayIterator();
+    }
+
+    public class ReverseArrayIterator implements Iterator<Item>{
+        private int i = N;
+
+        public boolean hasNext(){ return i > 0;}
+        public void remove() {}
+        public Item next() { return s[--i]; }
     }
 }

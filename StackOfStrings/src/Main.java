@@ -6,11 +6,15 @@ import edu.princeton.cs.algs4.StdOut;
 
 public class Main {
     public static void main(String[] args){
-        StackByArray stack = new StackByArray();
+        StackByArray<String> stack = new StackByArray<String>();
         while(!StdIn.isEmpty()){
             String s = StdIn.readString();
             if (s.equals("-"))  StdOut.println(stack.pop());
             else                stack.push(s);
+            for(String m: stack){
+                StdOut.print(m);
+                StdOut.print(":");
+            }
         }
     }
 }
